@@ -9,6 +9,7 @@ const SubmissionRoutes = require('./routes/SubmisstionRoutes');
 const app = express();
 require('dotenv').config();
 const PORT =process.env.PORT;
+const MONGODBURL=process.env.MONGODBURL;
 app.use(cors({
     origin:['http://localhost:5173','http://localhost:5174'],
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
@@ -22,7 +23,7 @@ app.use('/api', FolderRoutes);
 app.use('/',formRoutes);
 app.use('/',SubmissionRoutes);
 app.use(express.urlencoded({ extended: true }));
-mongoose.connect("mongodb+srv://admin:admin@cluster0.jpkgl.mongodb.net/Forms?retryWrites=true&w=majority&appName=Cluster0")
+mongoose.connect(MONGODBURL)
 .then(()=>{
     console.log('mongodb connected');
 })
