@@ -8,10 +8,10 @@ const CLIENT_URL=process.env.CLIENT_URL
 const registerUser = async (req,res) =>{
     try{
         const {name,email,password} = req.body;
-        console.log(name,email,password);
+        // console.log(name,email,password);
        
         const existingUser = await User.findOne({email})
-        console.log(existingUser);
+        // console.log(existingUser);
         if (existingUser) {
             return res.status(400).json({
                 message: 'User already exists, please use another email address',
@@ -19,7 +19,7 @@ const registerUser = async (req,res) =>{
        }else{
       
         const hashedPassword = await bcrypt.hash(password, 10);
-        console.log(hashedPassword)
+        // console.log(hashedPassword)
         
         const newUser = new User({
             name,
@@ -40,8 +40,8 @@ const registerUser = async (req,res) =>{
 const loginUser = async (req,res)=>{
     try{
      const {email,password} = req.body;
-     console.log("entry in loginUser");
-     console.log({email},{password});
+    //  console.log("entry in loginUser");
+    //  console.log({email},{password});
      const existingUser = await User.findOne({email: email});
      
      if(existingUser){

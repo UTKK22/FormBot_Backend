@@ -63,7 +63,7 @@ router.put('/update', verifyToken, updateUser);
   // Route to generate and share link
   router.post("/workspaces/share/email", verifyToken, async (req, res) => {
     const { email, permission, workspaceId } = req.body;
-  console.log({email, permission, workspaceId }, '>>>>>>>>>>>>>>>>>')
+  // console.log({email, permission, workspaceId }, '>>>>>>>>>>>>>>>>>')
     try {
       const user = await User.findOne({ email });
       if (!user) {
@@ -141,7 +141,7 @@ router.put('/update', verifyToken, updateUser);
   
   // Get all workspaces (owned and shared)
   router.get("/workspaces", verifyToken, async (req, res) => {
-    console.log("I am called ")
+    // console.log("I am called ")
     try {
       const user = await User.findById(req.user.userId)
       if (!user) {
@@ -161,13 +161,13 @@ router.put('/update', verifyToken, updateUser);
             const workspace = await User.findById(workspaceId);
             if (!workspace) {
                 console.log(`Workspace with ID ${workspaceId} not found.`);
-                return null; // You could also handle this case differently, like skipping or returning an error
+                return null; 
             }
             return { name: workspace.name , workspaceId : workspace._id };
         })
     );
 
-      console.log(workspaces, '<<<<<<<<<<workspaces>>>>>>>>>>>')
+      // console.log(workspaces, '<<<<<<<<<<workspaces>>>>>>>>>>>')
 
       res.status(200).json({
         workspaces

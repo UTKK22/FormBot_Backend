@@ -50,7 +50,7 @@ const { v4: uuidv4 } = require('uuid');
 const incrementViewCount = async (req, res) => {
   try {
     const { sessionId, shareableLink } = req.body;
-    console.log(req.body)
+    // console.log(req.body)
 
     // Ensure sessionId and shareableLink are provided
     if (!sessionId || !shareableLink) {

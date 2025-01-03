@@ -6,8 +6,8 @@ const createFolder = async (req, res) => {
   try {
     const { name, parentFolderId } = req.body;
     const workspaceId = req.user.userId;
-    console.log('Request Body:', req.body);
-    console.log('Workspace ID:', workspaceId);
+    // console.log('Request Body:', req.body);
+    // console.log('Workspace ID:', workspaceId);
 
     const newFolder = new Folder({
       name,

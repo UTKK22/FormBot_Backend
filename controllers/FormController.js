@@ -10,14 +10,14 @@ const createForm = async (req, res) => {
     }
 
     const workspaceId = req.user.userId;
-    console.log('User ID:', workspaceId);
-    console.log('Folder ID:', folder);
+    // console.log('User ID:', workspaceId);
+    // console.log('Folder ID:', folder);
 
     let folderExists = null;
     if (folder) {
       // Check if the folder exists and belongs to the user
       folderExists = await Folder.findOne({ _id: folder, workspaceId });
-      console.log('Folder exists:', folderExists);
+      // console.log('Folder exists:', folderExists);
 
       if (!folderExists) {
         return res.status(400).json({ message: 'Invalid folder ID or folder does not belong to the user' });
@@ -79,7 +79,7 @@ const createForm = async (req, res) => {
   
   const updateForm = async (req, res) => {
     try {
-      console.log(req.body)
+      // console.log(req.body)
       const form = await Form.findOneAndUpdate(
         { _id: req.params.id, workspaceId: req.user.userId },
         req.body,
@@ -96,8 +96,8 @@ const createForm = async (req, res) => {
   
   const deleteForm = async (req, res) => {
     try {
-      console.log('Request Params:', req.params);
-      console.log('User ID:', req.user.userId);
+      // console.log('Request Params:', req.params);
+      // console.log('User ID:', req.user.userId);
       
       const form = await Form.findOneAndDelete({ _id: req.params.id, workspaceId: req.user.userId });
       if (!form) {
